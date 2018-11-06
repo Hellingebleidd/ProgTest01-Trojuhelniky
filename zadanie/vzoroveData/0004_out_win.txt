@@ -1,0 +1,9 @@
+Trojuhelnik #1:
+Bod A:
+Bod B:
+Bod C:
+Trojuhelnik #2:
+Bod A:
+Bod B:
+Bod C:
+Body netvori trojuhelnik.
