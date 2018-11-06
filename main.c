@@ -4,6 +4,7 @@
 const int N = 3;
 const int M = 2;
 const int NIE_TROJUHOLNIK = 4;
+const int SU_ZHODNE = 13;
 
 
 int rozmerTrojuholnika(double v[N][M], double *dlzka) {
@@ -30,6 +31,14 @@ int nacitajSuradnice(double *x, double *y) {
         return -1;
     }
     return 2;
+}
+
+int suTrojuholnikyZhodne(double *dlzka1, double *dlzka2){
+    //tu treba skontrolovat variacie bez opakovania
+    //1 s 123, 2 s 123, 3 s 123
+    //zatial ma nenapada pekne riesenie
+
+    return 0;
 }
 
 int main() {
@@ -70,7 +79,7 @@ int main() {
         return -1;
     }
 
-    if (1==2){
+    if (suTrojuholnikyZhodne(dlzka1, dlzka2)==SU_ZHODNE ){
         printf("Trojuhelniky jsou shodne.\n");
         return 0;
     }
@@ -79,8 +88,7 @@ int main() {
 
     if (o1 == o2)
         printf("Trojuhelniky nejsou shodne, ale maji stejny obvod.\n");
-
-    if (o1 > o2)
+    else if (o1 > o2)
         printf("Trojuhelnik #1 ma vetsi obvod.\n");
     else
         printf("Trojuhelnik #2 ma vetsi obvod.\n");
