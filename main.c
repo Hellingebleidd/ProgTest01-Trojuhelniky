@@ -24,6 +24,7 @@ int rozmerTrojuholnika(double v[N][M], double *dlzka) {
 }
 
 int nacitajSuradnice(double *x, double *y) {
+    //pokusi sa nacitat hodnoty. Ak sa nepodari nacitat obe, tak vrati -1
     int vysledok;
     vysledok = scanf("%lf %lf", x, y);
     if (vysledok < 2) {
@@ -33,30 +34,64 @@ int nacitajSuradnice(double *x, double *y) {
     return 2;
 }
 
-int suTrojuholnikyZhodne(double *dlzka1, double *dlzka2){
-    //tu treba skontrolovat variacie bez opakovania
-    //1 s 123, 2 s 123, 3 s 123
-    //zatial ma nenapada pekne riesenie
+void triedDlzkyZostupne(double *d) {
+    //jednoduche triedenie 3 prvkov
+    double tmp;
+    for (int i = 0; i < 2; ++i) {
+        for (int j = i + 1; j < 3; ++j) {
+            if (d[i] < d[j]) {
+                tmp = d[i];
+                d[i] = d[j];
+                d[j] = tmp;
+            }
+        }
+    }
+}
+
+int suTrojuholnikyZhodne(double *dlzka1, double *dlzka2) {
+    //porovnam utriedene dlzk trojuholnikov
+//    printf("\nA> Su zhodne ? Dlzka1 %lf %lf %lf\n", dlzka1[0], dlzka1[1], dlzka1[2]);
+//    printf("A> Su zhodne ? Dlzka2 %lf %lf %lf\n", dlzka2[0], dlzka2[1], dlzka2[2]);
+
+    triedDlzkyZostupne(dlzka1);
+    triedDlzkyZostupne(dlzka2);
+//    printf("\nSu zhodne ? Dlzka1 %lf %lf %lf\n", dlzka1[0], dlzka1[1], dlzka1[2]);
+//    printf("Su zhodne ? Dlzka2 %lf %lf %lf\n", dlzka2[0], dlzka2[1], dlzka2[2]);
+
+    if ((dlzka1[0] == dlzka2[0]) && (dlzka1[1] == dlzka2[1]) && (dlzka1[2] == dlzka2[2]))
+        return SU_ZHODNE;
 
     return 0;
 }
 
 int main() {
     double dlzka1[3] = {0, 0, 0}, dlzka2[3] = {0, 0, 0};
-    double vrcholy1[3][2], vrcholy2[3][2];   //vrcholy trojuholnika};
+//    double vrcholy1[3][2], vrcholy2[3][2];   //vrcholy trojuholnika};
+//    double vrcholy1[3][2] = {{0,   0},
+//                             {5,   0},
+//                             {2.5, 3}};
+//    double vrcholy2[3][2] = {{4, -1},
+//                             {7, 1.5},
+//                             {4, 4}};   //vrcholy trojuholnika};
+    double vrcholy1[3][2] = {{0,   0},
+                             {10,   0},
+                             {0, 10}};
+    double vrcholy2[3][2] = {{-5, 3},
+                             {12, 8},
+                             {37, 15}};   //vrcholy trojuholnika};
     double o1, o2;      //obvod
 
 
     printf("Trojuhelnik #1:\n");
-    printf("Bod A:\n");
-    if (nacitajSuradnice(&vrcholy1[0][0], &vrcholy1[0][1]) < 2)
-        return -1;
-    printf("Bod B:\n");
-    if (nacitajSuradnice(&vrcholy1[1][0], &vrcholy1[1][1]) < 2)
-        return -1;
-    printf("Bod C:\n");
-    if (nacitajSuradnice(&vrcholy1[2][0], &vrcholy1[2][1]) < 2)
-        return -1;
+//    printf("Bod A:\n");
+//    if (nacitajSuradnice(&vrcholy1[0][0], &vrcholy1[0][1]) < 2)
+//        return -1;
+//    printf("Bod B:\n");
+//    if (nacitajSuradnice(&vrcholy1[1][0], &vrcholy1[1][1]) < 2)
+//        return -1;
+//    printf("Bod C:\n");
+//    if (nacitajSuradnice(&vrcholy1[2][0], &vrcholy1[2][1]) < 2)
+//        return -1;
 
     if (rozmerTrojuholnika(vrcholy1, dlzka1) == NIE_TROJUHOLNIK) {
         printf("Body netvori trojuhelnik.\n");
@@ -64,22 +99,22 @@ int main() {
     }
 
     printf("Trojuhelnik #2:\n");
-    printf("Bod A:\n");
-    if (nacitajSuradnice(&vrcholy2[0][0], &vrcholy2[0][1]) < 2)
-        return -1;
-    printf("Bod B:\n");
-    if (nacitajSuradnice(&vrcholy2[1][0], &vrcholy2[1][1]) < 2)
-        return -1;
-    printf("Bod C:\n");
-    if (nacitajSuradnice(&vrcholy2[2][0], &vrcholy2[2][1]) < 2)
-        return -1;
+//    printf("Bod A:\n");
+//    if (nacitajSuradnice(&vrcholy2[0][0], &vrcholy2[0][1]) < 2)
+//        return -1;
+//    printf("Bod B:\n");
+//    if (nacitajSuradnice(&vrcholy2[1][0], &vrcholy2[1][1]) < 2)
+//        return -1;
+//    printf("Bod C:\n");
+//    if (nacitajSuradnice(&vrcholy2[2][0], &vrcholy2[2][1]) < 2)
+//        return -1;
 
     if (rozmerTrojuholnika(vrcholy2, dlzka2) == NIE_TROJUHOLNIK) {
         printf("Body netvori trojuhelnik.\n");
         return -1;
     }
 
-    if (suTrojuholnikyZhodne(dlzka1, dlzka2)==SU_ZHODNE ){
+    if (suTrojuholnikyZhodne(dlzka1, dlzka2) == SU_ZHODNE) {
         printf("Trojuhelniky jsou shodne.\n");
         return 0;
     }
