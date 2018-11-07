@@ -14,6 +14,7 @@ int rozmerTrojuholnika(double v[N][M], double *dlzka) {
         if (i == 2) { p2 = 0; } else { p2 = i + 1; }
         //dlzku strany urcim pytagorovou vetou
         dlzka[i] = sqrt(pow((v[i][0] - v[p2][0]), 2) + pow((v[i][1] - v[p2][1]), 2));
+        dlzka[i] = (round(10000*(dlzka[i])))/10000;
     }
     if ((dlzka[0] >= (dlzka[1] + dlzka[2])) || (dlzka[1] >= (dlzka[2] + dlzka[0])) ||
         (dlzka[2] >= (dlzka[0] + dlzka[1])))
@@ -51,8 +52,6 @@ int suTrojuholnikyZhodne(double *dlzka1, double *dlzka2) {
 
     triedDlzkyZostupne(dlzka1);
     triedDlzkyZostupne(dlzka2);
-//    printf("\nSu zhodne ? Dlzka1 %lf %lf %lf\n", dlzka1[0], dlzka1[1], dlzka1[2]);
-//    printf("Su zhodne ? Dlzka2 %lf %lf %lf\n", dlzka2[0], dlzka2[1], dlzka2[2]);
 
     if ((dlzka1[0] == dlzka2[0]) && (dlzka1[1] == dlzka2[1]) && (dlzka1[2] == dlzka2[2]))
         return SU_ZHODNE;
