@@ -1,0 +1,4 @@
+Trojuhelnik #1:
+Bod A:
+Bod B:
+Nespravny vstup.
