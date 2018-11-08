@@ -1,5 +1,5 @@
 #vystupy z testov
-testy/0000_out_zz.txt
+testy/*_out_zz.txt
 
 # Created by https://www.gitignore.io/api/linux,clion,windows,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=linux,clion,windows,visualstudiocode
