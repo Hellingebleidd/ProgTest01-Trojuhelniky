@@ -7,41 +7,47 @@ int main() {
     double o1, o2;                          //obvod
     int i;  // do cyklov
     double tmp;
+    char c;
 
     for (i = 0; i < 2; ++i) {
         printf("Trojuhelnik #%d:\n", i + 1);
         printf("Bod A:\n");
-        if (scanf("%lf %lf", &vrcholy[0][0], &vrcholy[0][1]) < 2) {
+        if ((scanf("%lf %lf%c", &vrcholy[0][0], &vrcholy[0][1], &c) != 3) || (c != '\n' && c != ' ')) {
             printf("Nespravny vstup.\n");
-            return -1;}
+            return -1;
+        }
+
         printf("Bod B:\n");
-        if (scanf("%lf %lf", &vrcholy[1][0], &vrcholy[1][1]) < 2) {
+        if ((scanf("%lf %lf%c", &vrcholy[1][0], &vrcholy[1][1], &c) != 3) || (c != '\n' && c != ' ')) {
             printf("Nespravny vstup.\n");
             return -1;
         }
         //mozem vypocitat 1. dlzku
-        dlzka[i][0] = (round(10000 * (sqrt(pow((vrcholy[0][0] - vrcholy[1][0]), 2) + pow((vrcholy[0][1] - vrcholy[1][1]), 2))))) / 10000;
+        dlzka[i][0] = (round(10000 * (sqrt(pow((vrcholy[0][0] - vrcholy[1][0]), 2) +
+                                           pow((vrcholy[0][1] - vrcholy[1][1]), 2))))) / 10000;
 
         printf("Bod C:\n");
-        if (scanf("%lf %lf", &vrcholy[2][0], &vrcholy[2][1]) < 2) {
+        if ((scanf("%lf %lf%c", &vrcholy[2][0], &vrcholy[2][1], &c) != 3) || (c != '\n' && c != ' ')) {
             printf("Nespravny vstup.\n");
             return -1;
         }
         //mozem vypocitat dalsie 2 dlzky a zaroven usporiadat
-        if ((dlzka[i][1] = (round(10000 * (sqrt(pow((vrcholy[1][0] - vrcholy[2][0]), 2) + pow((vrcholy[1][1] - vrcholy[2][1]), 2))))) / 10000)> dlzka[i][0]){
+        if ((dlzka[i][1] = (round(10000 * (sqrt(pow((vrcholy[1][0] - vrcholy[2][0]), 2) +
+                                                pow((vrcholy[1][1] - vrcholy[2][1]), 2))))) / 10000) > dlzka[i][0]) {
             //dat na zaciatok pola - pozicia 0
             tmp = dlzka[i][1];
             dlzka[i][1] = dlzka[i][0];
             dlzka[i][0] = tmp;
         }
 
-        if ((dlzka[i][2] = (round(10000 * (sqrt(pow((vrcholy[2][0] - vrcholy[0][0]), 2) + pow((vrcholy[2][1] - vrcholy[0][1]), 2))))) / 10000)> dlzka[i][1]){
+        if ((dlzka[i][2] = (round(10000 * (sqrt(pow((vrcholy[2][0] - vrcholy[0][0]), 2) +
+                                                pow((vrcholy[2][1] - vrcholy[0][1]), 2))))) / 10000) > dlzka[i][1]) {
             //posunut [1] na koniec na [2] a potom este porovnat s navacsou [0]
             tmp = dlzka[i][2];
             dlzka[i][2] = dlzka[i][1];
             dlzka[i][1] = tmp;
 
-            if (tmp > dlzka[i][0]){
+            if (tmp > dlzka[i][0]) {
                 //dat na zaciatok pola - pozicia 0
                 dlzka[i][1] = dlzka[i][0];
                 dlzka[i][0] = tmp;
@@ -50,14 +56,14 @@ int main() {
 
 
         //kedze prva dlzka ( dlzka[i][0] ) je najvacsia, staci skontrolovat len ju
-        if (dlzka[i][0] >= (dlzka[i][1] + dlzka[i][2])){
+        if (dlzka[i][0] >= (dlzka[i][1] + dlzka[i][2])) {
             printf("Body netvori trojuhelnik.\n");
             return -1;
         }
     }
 
     //zhodne su, ak maju rovnake dlzky (utriedene podla velkosti)
-    if ((dlzka[0][0] == dlzka[1][0]) && (dlzka[0][1] == dlzka[1][1]) && (dlzka[0][2] == dlzka[1][2])){
+    if ((dlzka[0][0] == dlzka[1][0]) && (dlzka[0][1] == dlzka[1][1]) && (dlzka[0][2] == dlzka[1][2])) {
         //trojuhelniky su zhodne
         printf("Trojuhelniky jsou shodne.\n");
         return 0;

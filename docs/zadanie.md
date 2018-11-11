@@ -68,8 +68,7 @@ výstup). Za chybu považujte:
 
 0 40
 
-**Trojuhelniky nejsou shodne, ale maji
-stejny obvod.**
+**Trojuhelniky nejsou shodne, ale maji stejny obvod.**
 
 **Trojuhelnik #1:**
 
@@ -129,8 +128,7 @@ stejny obvod.**
 
 20.16 2.7
 
-**Trojuhelniky nejsou shodne, ale maji
-stejny obvod.**
+**Trojuhelniky nejsou shodne, ale maji stejny obvod.**
 
 **Trojuhelnik #1:**
 
