@@ -10,6 +10,7 @@
 @ %testPrg% < 0005_in.txt > 0005_out_zz.txt
 @ %testPrg% < 0006_in.txt > 0006_out_zz.txt
 @ %testPrg% < 0007_in.txt > 0007_out_zz.txt
+@ %testPrg% < 0008_in.txt > 0008_out_zz.txt
 
 @ fc 0000_out_zz.txt 0000_out_win.txt > null && Echo 0000 ok || fc 0000_out_zz.txt 0000_out_win.txt
 @ fc 0001_out_zz.txt 0001_out_win.txt > null && Echo 0001 ok || fc 0001_out_zz.txt 0001_out_win.txt
@@ -20,7 +21,7 @@
 @ fc 0006_out_zz.txt 0006_out_win.txt > null && Echo 0006 ok || fc 0006_out_zz.txt 0006_out_win.txt
 @ fc 0007_out_zz.txt 0007_out_win.txt > null && Echo 0007 ok || fc 0007_out_zz.txt 0007_out_win.txt
 
-@ rem fc 0008_out_zz.txt 0008_out_win.txt > null && Echo 0008 ok || fc 0008_out_zz.txt 0008_out_win.txt
+@ fc 0008_out_zz.txt 0008_out_win.txt > null && Echo 0008 ok || fc 0008_out_zz.txt 0008_out_win.txt
 @ rem fc 0009_out_zz.txt 0009_out_win.txt > null && Echo 0009 ok || fc 0009_out_zz.txt 0009_out_win.txt
 @ rem fc 0010_out_zz.txt 0010_out_win.txt > null && Echo 0010 ok || fc 0010_out_zz.txt 0010_out_win.txt
 @ rem fc 0011_out_zz.txt 0011_out_win.txt > null && Echo 0011 ok || fc 0011_out_zz.txt 0011_out_win.txt

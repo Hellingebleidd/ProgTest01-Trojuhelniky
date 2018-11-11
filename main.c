@@ -8,6 +8,7 @@ int main() {
     int i;  // do cyklov
     double tmp;
     char c;
+    const int Zaokruhlenie=1000;
 
     for (i = 0; i < 2; ++i) {
         printf("Trojuhelnik #%d:\n", i + 1);
@@ -23,8 +24,8 @@ int main() {
             return -1;
         }
         //mozem vypocitat 1. dlzku
-        dlzka[i][0] = (round(10000 * (sqrt(pow((vrcholy[0][0] - vrcholy[1][0]), 2) +
-                                           pow((vrcholy[0][1] - vrcholy[1][1]), 2))))) / 10000;
+        dlzka[i][0] = (round(Zaokruhlenie * (sqrt(pow((vrcholy[0][0] - vrcholy[1][0]), 2) +
+                                           pow((vrcholy[0][1] - vrcholy[1][1]), 2))))) / Zaokruhlenie;
 
         printf("Bod C:\n");
         if ((scanf("%lf %lf%c", &vrcholy[2][0], &vrcholy[2][1], &c) != 3) || (c != '\n' && c != ' ')) {
@@ -32,16 +33,16 @@ int main() {
             return -1;
         }
         //mozem vypocitat dalsie 2 dlzky a zaroven usporiadat
-        if ((dlzka[i][1] = (round(10000 * (sqrt(pow((vrcholy[1][0] - vrcholy[2][0]), 2) +
-                                                pow((vrcholy[1][1] - vrcholy[2][1]), 2))))) / 10000) > dlzka[i][0]) {
+        if ((dlzka[i][1] = (round(Zaokruhlenie * (sqrt(pow((vrcholy[1][0] - vrcholy[2][0]), 2) +
+                                                pow((vrcholy[1][1] - vrcholy[2][1]), 2))))) / Zaokruhlenie) > dlzka[i][0]) {
             //dat na zaciatok pola - pozicia 0
             tmp = dlzka[i][1];
             dlzka[i][1] = dlzka[i][0];
             dlzka[i][0] = tmp;
         }
 
-        if ((dlzka[i][2] = (round(10000 * (sqrt(pow((vrcholy[2][0] - vrcholy[0][0]), 2) +
-                                                pow((vrcholy[2][1] - vrcholy[0][1]), 2))))) / 10000) > dlzka[i][1]) {
+        if ((dlzka[i][2] = (round(Zaokruhlenie * (sqrt(pow((vrcholy[2][0] - vrcholy[0][0]), 2) +
+                                                pow((vrcholy[2][1] - vrcholy[0][1]), 2))))) / Zaokruhlenie) > dlzka[i][1]) {
             //posunut [1] na koniec na [2] a potom este porovnat s navacsou [0]
             tmp = dlzka[i][2];
             dlzka[i][2] = dlzka[i][1];
@@ -54,7 +55,7 @@ int main() {
             }
         }
 
-
+//printf("dlzky: %lf %lf %lf\n", dlzka[i][0], dlzka[i][1], dlzka[i][2]);
         //kedze prva dlzka ( dlzka[i][0] ) je najvacsia, staci skontrolovat len ju
         if (dlzka[i][0] >= (dlzka[i][1] + dlzka[i][2])) {
             printf("Body netvori trojuhelnik.\n");
@@ -69,11 +70,9 @@ int main() {
         return 0;
     }
 
-    //zaokruhlenie kvoli nepresnostiam 1.99999999999 a 2.00000
     o1 = dlzka[0][0] + dlzka[0][1] + dlzka[0][2];
     o2 = dlzka[1][0] + dlzka[1][1] + dlzka[1][2];
 
-//    printf("o1: %lf  o2: %lf\n", o1, o2);
 
     if (o1 < o2)
         printf("Trojuhelnik #2 ma vetsi obvod.\n");

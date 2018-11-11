@@ -4,4 +4,6 @@ Bod B:
 Bod C:
 Trojuhelnik #2:
 Bod A:
-Nespravny vstup.
+Bod B:
+Bod C:
+Body netvori trojuhelnik.
